@@ -1,0 +1,92 @@
+[
+  {
+    "title": "What does HTML stand for?",
+    "answers": [
+      { "text": "Hyper Text Markup Language", "isCorrect": true },
+      { "text": "High Text Machine Language", "isCorrect": false },
+      { "text": "Hyper Tool Multi Language", "isCorrect": false },
+      { "text": "Home Text Markup Language", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which tag is used to link CSS file?",
+    "answers": [
+      { "text": "<style>", "isCorrect": false },
+      { "text": "<script>", "isCorrect": false },
+      { "text": "<link>", "isCorrect": true },
+      { "text": "<css>", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which property is used to change text color in CSS?",
+    "answers": [
+      { "text": "font-color", "isCorrect": false },
+      { "text": "text-color", "isCorrect": false },
+      { "text": "color", "isCorrect": true },
+      { "text": "background-color", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which method is used to select element by id in JavaScript?",
+    "answers": [
+      { "text": "getElementByClass()", "isCorrect": false },
+      { "text": "querySelectorAll()", "isCorrect": false },
+      { "text": "getElementById()", "isCorrect": true },
+      { "text": "getElements()", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which company developed JavaScript?",
+    "answers": [
+      { "text": "Microsoft", "isCorrect": false },
+      { "text": "Netscape", "isCorrect": true },
+      { "text": "Google", "isCorrect": false },
+      { "text": "Apple", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which symbol is used for single line comment in JavaScript?",
+    "answers": [
+      { "text": "//", "isCorrect": true },
+      { "text": "<!-- -->", "isCorrect": false },
+      { "text": "/* */", "isCorrect": false },
+      { "text": "#", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which CSS property is used to make text bold?",
+    "answers": [
+      { "text": "font-style", "isCorrect": false },
+      { "text": "text-weight", "isCorrect": false },
+      { "text": "font-weight", "isCorrect": true },
+      { "text": "bold-text", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which HTML tag is used to create a button?",
+    "answers": [
+      { "text": "<btn>", "isCorrect": false },
+      { "text": "<button>", "isCorrect": true },
+      { "text": "<input-button>", "isCorrect": false },
+      { "text": "<click>", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which function converts JSON string to JavaScript object?",
+    "answers": [
+      { "text": "JSON.parse()", "isCorrect": true },
+      { "text": "JSON.stringify()", "isCorrect": false },
+      { "text": "JSON.convert()", "isCorrect": false },
+      { "text": "JSON.toObject()", "isCorrect": false }
+    ]
+  },
+  {
+    "title": "Which operator is used for strict equality in JavaScript?",
+    "answers": [
+      { "text": "==", "isCorrect": false },
+      { "text": "=", "isCorrect": false },
+      { "text": "===", "isCorrect": true },
+      { "text": "!=", "isCorrect": false }
+    ]
+  }
+]
