@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam</title>
+    <style>
+        progress {
+            appearance: none;
+            width: 100%;
+            height: 20px;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: #dad9d9;
+            border-radius: 10px;
+        }
+
+        progress::-webkit-progress-value {
+            background-color: #800f5e;
+            border-radius: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .nextBtn,
+        .prevBtn {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            background-color: #800f5e;
+            color: white;
+            cursor: pointer;
+        }
+
+        .index {
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: #b588a8;
+            color: white;
+        }
+
+        .markBtn {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            background-color: #b588a8;
+            color: white;
+            cursor: pointer;
+        }
+
+        .subBtn {
+            background-color: #28A745;
+            color: white;
+            display: block;
+            width: 20%;
+            margin: 20px auto;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: none;
+        }
+        .main
+        {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .markList
+        {
+            background-color: #dad9d9;
+            height: 500px;
+            width: 20%;
+            border-radius: 10px;
+
+        }
+        .question{
+            flex-grow: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <progress class="progress" value="2" max="10"></progress>
+    <div class="main">
+        <div class="question">
+            <p class="title">Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="markList"></div>
+    </div>
+    <div class="controls">
+        <div class="navigation">
+            <button class="nextBtn">Next</button>
+            <span class="index">1</span>
+            <button class="prevBtn">Previous</button>
+        </div>
+
+        <button class="markBtn">Mark</button>
+    </div>
+
+    <button class="subBtn">Submit</button>
+</body>
+
+</html>
