@@ -7,8 +7,9 @@ const index = document.querySelector(".index");
 const progress = document.querySelector(".progress");
 const markList = document.querySelector(".markList");
 const markBtn = document.querySelector(".markBtn");
-let questions = [], markedList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-let cuurentIndex = 0, score = 0;
+let questions = [], markedList = [];
+markedList = new Array(questions.length).fill(0);
+let cuurentIndex = 0, score = 0, time = 60;
 function Question(title, answers) {
     this.title = title;
     this.answers = answers;
@@ -86,10 +87,18 @@ prev.addEventListener('click', function () {
 
 markBtn.addEventListener('click', function () {
     if (!markedList[cuurentIndex]) {
-        markedList[cuurentIndex]=1;
+        markedList[cuurentIndex] = 1;
         const markQuestion = document.createElement('p');
         markQuestion.classList.add('mark');
         markQuestion.innerText = `mrk-Question ${cuurentIndex + 1}`;
         markList.appendChild(markQuestion);
     }
 })
+
+const timer = setInterval(() => {
+    time--;
+    if (time === 0) {
+        clearInterval(timer);
+        window.location.href = "timeout.html";
+    }
+}, 1000);
