@@ -1,5 +1,10 @@
 const question = document.querySelector(".question");
 const answer = document.querySelector(".answer");
+const next = document.querySelector(".nextBtn");
+const prev = document.querySelector(".prevBtn");
+const titleQuestion = document.querySelector(".title");
+const index = document.querySelector(".index");
+const progress = document.querySelector(".progress");
 let questions = [];
 let cuurentIndex = 0, score = 0;
 function Question(title, answers) {
@@ -57,4 +62,22 @@ function displayQuestion() {
     })
 }
 
+next.addEventListener('click', function () {
+    if (cuurentIndex != questions.length - 1)
+        cuurentIndex++;
+    index.innerText = cuurentIndex+1;
+    const selectedRadio = document.querySelector('input[name="answer"]:checked');
+    if (selectedRadio) {
+        if (selectedRadio.value === "true") score++;
+    }
+    progress.value=cuurentIndex+1;
+    displayQuestion();
+})
 
+prev.addEventListener('click', function () {
+    if (cuurentIndex != 0)
+        cuurentIndex--;
+    index.innerText = cuurentIndex+1;
+     progress.value=cuurentIndex+1;
+    displayQuestion();
+})
