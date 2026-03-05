@@ -7,6 +7,7 @@ const index = document.querySelector(".index");
 const progress = document.querySelector(".progress");
 const markList = document.querySelector(".markList");
 const markBtn = document.querySelector(".markBtn");
+const subBtn = document.querySelector(".subBtn");
 let questions = [], markedList = [];
 markedList = new Array(questions.length).fill(0);
 let cuurentIndex = 0, score = 0, time = 60;
@@ -102,3 +103,7 @@ const timer = setInterval(() => {
         window.location.href = "timeout.html";
     }
 }, 1000);
+
+subBtn.addEventListener('click',function(){
+      window.location.href = "grades.html";
+})
