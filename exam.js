@@ -5,7 +5,9 @@ const prev = document.querySelector(".prevBtn");
 const titleQuestion = document.querySelector(".title");
 const index = document.querySelector(".index");
 const progress = document.querySelector(".progress");
-let questions = [];
+const markList = document.querySelector(".markList");
+const markBtn = document.querySelector(".markBtn");
+let questions = [], markedList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let cuurentIndex = 0, score = 0;
 function Question(title, answers) {
     this.title = title;
@@ -65,19 +67,29 @@ function displayQuestion() {
 next.addEventListener('click', function () {
     if (cuurentIndex != questions.length - 1)
         cuurentIndex++;
-    index.innerText = cuurentIndex+1;
+    index.innerText = cuurentIndex + 1;
     const selectedRadio = document.querySelector('input[name="answer"]:checked');
     if (selectedRadio) {
         if (selectedRadio.value === "true") score++;
     }
-    progress.value=cuurentIndex+1;
+    progress.value = cuurentIndex + 1;
     displayQuestion();
 })
 
 prev.addEventListener('click', function () {
     if (cuurentIndex != 0)
         cuurentIndex--;
-    index.innerText = cuurentIndex+1;
-     progress.value=cuurentIndex+1;
+    index.innerText = cuurentIndex + 1;
+    progress.value = cuurentIndex + 1;
     displayQuestion();
+})
+
+markBtn.addEventListener('click', function () {
+    if (!markedList[cuurentIndex]) {
+        markedList[cuurentIndex]=1;
+        const markQuestion = document.createElement('p');
+        markQuestion.classList.add('mark');
+        markQuestion.innerText = `mrk-Question ${cuurentIndex + 1}`;
+        markList.appendChild(markQuestion);
+    }
 })
