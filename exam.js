@@ -8,9 +8,11 @@ const progress = document.querySelector(".progress");
 const markList = document.querySelector(".markList");
 const markBtn = document.querySelector(".markBtn");
 const subBtn = document.querySelector(".subBtn");
+const timerElement = document.querySelector(".timer");
+
 let questions = [], markedList = [];
 markedList = new Array(questions.length).fill(0);
-let cuurentIndex = 0, score = 0, time = 60;
+let cuurentIndex = 0, score = 0, time = 1800;
 function Question(title, answers) {
     this.title = title;
     this.answers = answers;
@@ -97,11 +99,21 @@ markBtn.addEventListener('click', function () {
 })
 
 const timer = setInterval(() => {
+
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    timerElement.textContent = `${minutes}:${seconds}`;
+
     time--;
-    if (time === 0) {
+
+    if (time < 0) {
         clearInterval(timer);
         window.location.href = "timeout.html";
     }
+
 }, 1000);
 
 subBtn.addEventListener('click',function(){
