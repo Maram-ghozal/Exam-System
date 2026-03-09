@@ -9,9 +9,8 @@ const markList = document.querySelector(".markList");
 const markBtn = document.querySelector(".markBtn");
 const subBtn = document.querySelector(".subBtn");
 const timerElement = document.querySelector(".timer");
+let questions = [], markedList = [], scoreList = [];
 
-let questions = [], markedList = [];
-markedList = new Array(questions.length).fill(0);
 let cuurentIndex = 0, score = 0, time = 1800;
 function Question(title, answers) {
     this.title = title;
@@ -34,6 +33,9 @@ async function loadQuestion() {
         questions.push(new Question(question.title, arrAnswer));
     });
     questions.sort(() => Math.random() - 0.5);
+
+    markedList = new Array(questions.length).fill(0);
+    scoreList = new Array(questions.length).fill(null);
     displayQuestion();
 }
 loadQuestion();
@@ -53,15 +55,26 @@ function displayQuestion() {
     }
     titleQuestion.innerText = questions[cuurentIndex].title;
 
-    questions[cuurentIndex].answers.forEach(ans => {
+    questions[cuurentIndex].answers.forEach((ans, i) => {
         const div = document.createElement("div");
         div.classList.add("radioInput");
         const radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "answer";
-        radio.value = ans.isCorrect;
+        radio.value = i;
         const label = document.createElement("label");
         label.innerText = ans.answer;
+
+
+        if (scoreList[cuurentIndex] === i) {
+            radio.checked = true;
+        }
+
+        radio.addEventListener("change", function () {
+            scoreList[cuurentIndex] = i;
+        });
+
+
         div.appendChild(radio);
         div.appendChild(label);
         answer.appendChild(div);
@@ -72,10 +85,6 @@ next.addEventListener('click', function () {
     if (cuurentIndex != questions.length - 1)
         cuurentIndex++;
     index.innerText = cuurentIndex + 1;
-    const selectedRadio = document.querySelector('input[name="answer"]:checked');
-    if (selectedRadio) {
-        if (selectedRadio.value === "true") score++;
-    }
     progress.value = cuurentIndex + 1;
     displayQuestion();
 })
@@ -98,6 +107,7 @@ markBtn.addEventListener('click', function () {
     }
 })
 
+
 const timer = setInterval(() => {
 
     let minutes = Math.floor(time / 60);
@@ -116,6 +126,16 @@ const timer = setInterval(() => {
 
 }, 1000);
 
-subBtn.addEventListener('click',function(){
-      window.location.href = "grades.html";
+subBtn.addEventListener('click', function () {
+    questions.forEach((q, i) => {
+        const selected = scoreList[i];
+
+        if (selected !== null && q.answers[selected].isCorrect) {
+            score++;
+        }
+    });
+    localStorage.setItem("examScore", score);
+    localStorage.setItem("examTotal", questions.length);
+    // console.log(score);
+    window.location.href = "grades.html";
 })
