@@ -10,6 +10,12 @@ const markBtn = document.querySelector(".markBtn");
 const subBtn = document.querySelector(".subBtn");
 const timerElement = document.querySelector(".timer");
 
+// redirect to login if not logged in
+const currentUserEmail = localStorage.getItem("currentUser");
+if (!currentUserEmail) {
+    window.location.replace("index.html");
+}
+
 let questions = [], markedList = [];
 markedList = new Array(questions.length).fill(0);
 let cuurentIndex = 0, score = 0, time = 1800;
