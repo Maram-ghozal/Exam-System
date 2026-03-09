@@ -127,3 +127,11 @@ subBtn.addEventListener('click',function(){
     localStorage.setItem("examTotal", questions.length);
     window.location.replace("grades.html");
 })
+
+function logout() {
+    clearInterval(timer);
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("examScore");
+    localStorage.removeItem("examTotal");
+    window.location.href = "index.html";
+}
