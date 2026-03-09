@@ -123,5 +123,7 @@ const timer = setInterval(() => {
 }, 1000);
 
 subBtn.addEventListener('click',function(){
-      window.location.href = "grades.html";
+    localStorage.setItem("examScore", score);
+    localStorage.setItem("examTotal", questions.length);
+    window.location.replace("grades.html");
 })
