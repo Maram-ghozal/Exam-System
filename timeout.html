@@ -3,9 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Time's Up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdf0f8 0%, #f5e6f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 60px;
+            box-shadow: 0 20px 60px rgba(128, 15, 94, 0.15);
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: shake 0.6s ease 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25%       { transform: rotate(-10deg); }
+            75%       { transform: rotate(10deg); }
+        }
+
+        .greeting { font-size: 1rem; color: #888; margin-bottom: 5px; }
+
+        .student-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #800f5e;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .btn-home {
+            background-color: #800f5e;
+            color: white;
+            border: none;
+            padding: 13px 40px;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .btn-home:hover { background-color: #6a0c4e; }
+    </style>
 </head>
 <body>
-    
+    <div class="card">
+        <div class="icon">⏰</div>
+        <p class="greeting">Sorry,</p>
+        <h2 class="student-name" id="studentName">Student</h2>
+        <p class="message">
+            Your exam time has expired.
+        </p>
+        <a href="index.html" class="btn-home">Back to Login</a>
+    </div>
+
+    <script>
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const currentUserEmail = localStorage.getItem("currentUser");
+        const currentUser = users.find(u => u.email === currentUserEmail);
+
+        if (currentUser) {
+            document.getElementById("studentName").textContent =
+                currentUser.firstName + " " + currentUser.lastName;
+        }
+    </script>
 </body>
 </html>
