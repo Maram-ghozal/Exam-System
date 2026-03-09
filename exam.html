@@ -153,10 +153,24 @@
             font-size: 30px;
             font-weight: bold;
         }
+
+        .logoutBtn {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            background-color: #dc3545;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
+    <button class="logoutBtn" onclick="logout()">Logout</button>
     <progress class="progress" value="1" max="10"></progress>
     <div class="timer-container">
         <span class="timer">30:00</span>
