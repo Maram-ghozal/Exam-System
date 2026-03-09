@@ -35,7 +35,7 @@ loginForm.addEventListener("submit" , (e) => {
         return;
     }
 
-    // localStorage.setItem("currentUser", email);
+    localStorage.setItem("currentUser", email);
 
     window.location.replace("exam.html");
 
