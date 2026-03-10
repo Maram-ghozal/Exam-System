@@ -59,7 +59,15 @@ function displayQuestion() {
         prev.style.display = "inline";
         next.style.display = "inline";
     }
+
+    if (markedList[cuurentIndex]) {
+        markBtn.innerText = "Unmark";
+    } else {
+        markBtn.innerText = "Mark";
+    }
+
     titleQuestion.innerText = questions[cuurentIndex].title;
+
     questions[cuurentIndex].answers.forEach((ans, i) => {
         const div = document.createElement("div");
         div.classList.add("radioInput");
@@ -109,7 +117,31 @@ markBtn.addEventListener('click', function () {
         const markQuestion = document.createElement('p');
         markQuestion.classList.add('mark');
         markQuestion.innerText = `mrk-Question ${cuurentIndex + 1}`;
+        markQuestion.setAttribute("data-index", cuurentIndex);
+
+        markQuestion.addEventListener("click", function () {
+
+            cuurentIndex = Number(this.dataset.index);
+
+            index.innerText = cuurentIndex + 1;
+            progress.value = cuurentIndex + 1;
+
+            displayQuestion();
+
+        });
         markList.appendChild(markQuestion);
+        markBtn.innerText = "UnMark";
+    }
+    else {
+        markedList[cuurentIndex] = 0;
+
+        const markItem = markList.querySelector(`[data-index="${cuurentIndex}"]`);
+
+        if (markItem) {
+            markItem.remove();
+        }
+
+        markBtn.innerText = "Mark";
     }
 })
 
@@ -141,7 +173,7 @@ subBtn.addEventListener('click', function () {
     });
     localStorage.setItem("examScore", score);
     localStorage.setItem("examTotal", questions.length);
-    console.log(score);
+    //console.log(score);
     window.location.href = "grades.html";
 })
 
